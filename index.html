@@ -15,13 +15,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">\
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">\
   <style>\
-    body \{\
-      font-family: 'Poppins', sans-serif;\
-    \}\
-    .arabic-text \{\
-      font-family: 'Amiri', serif;\
-      direction: rtl;\
-    \}\
+    body \{ font-family: 'Poppins', sans-serif; \}\
+    .arabic-text \{ font-family: 'Amiri', serif; direction: rtl; \}\
   </style>\
 </head>\
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">\
@@ -48,7 +43,7 @@
   <!-- Main Content Container -->\
   <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">\
 \
-    <!-- Tab Selection / Subject Switcher -->\
+    <!-- Tab Selection -->\
     <div class="bg-white rounded-xl shadow-md p-2 mb-6 flex flex-wrap gap-2 border border-slate-200">\
       <button id="tab-jawi" onclick="switchSubject('jawi')" class="flex-1 min-w-[140px] py-3 px-4 rounded-lg font-semibold text-center transition flex items-center justify-center space-x-2 bg-emerald-600 text-white shadow">\
         <i class="fa-solid fa-pen-nib"></i>\
@@ -80,16 +75,11 @@
       <div class="mb-6">\
         <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1" id="topic-tag">Topik: Ejaan kata tunggal</div>\
         <h2 id="question-text" class="text-lg md:text-xl font-bold text-slate-800 leading-relaxed mb-2"> Loading soalan...</h2>\
-        <!-- Arabic Display (HANYA dipaparkan untuk soalan Tilawah Al-Quran yang memerlukan ayat Quran) -->\
         <div id="arabic-display" class="arabic-text text-2xl md:text-3xl text-emerald-800 my-4 p-3 bg-emerald-50/50 rounded-xl border border-emerald-100 text-right hidden"></div>\
       </div>\
 \
-      <!-- Options List -->\
-      <div id="options-container" class="space-y-3">\
-        <!-- Dynamic Options inserted here -->\
-      </div>\
+      <div id="options-container" class="space-y-3"></div>\
 \
-      <!-- Rationale / Feedback Box -->\
       <div id="feedback-box" class="mt-6 p-4 rounded-xl border hidden transition-all">\
         <div class="flex items-start space-x-3">\
           <div id="feedback-icon" class="text-2xl mt-0.5"></div>\
@@ -100,7 +90,6 @@
         </div>\
       </div>\
 \
-      <!-- Navigation Buttons -->\
       <div class="mt-8 flex justify-between items-center pt-4 border-t border-slate-100">\
         <button id="prev-btn" onclick="prevQuestion()" class="px-4 py-2 rounded-lg text-slate-500 bg-slate-100 hover:bg-slate-200 font-medium text-sm transition disabled:opacity-40 disabled:cursor-not-allowed">\
           <i class="fa-solid fa-arrow-left mr-1"></i> Soalan Sebelum\
@@ -117,11 +106,9 @@
         <div class="inline-flex p-4 bg-emerald-100 text-emerald-700 rounded-full mb-4">\
           <i class="fa-solid fa-trophy text-4xl"></i>\
         </div>\
-        <!-- Tajuk disemak: Tanpa nama khas -->\
         <h2 class="text-2xl font-bold text-slate-800 mb-2">Keputusan Latihan</h2>\
         <p class="text-slate-500 text-sm mb-6">Syabas! Berikut ialah analisis jawapan mengikut subjek.</p>\
 \
-        <!-- Score Breakdown Grid -->\
         <div class="grid grid-cols-2 gap-4 mb-6">\
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">\
             <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Imlak Jawi</h3>\
@@ -132,13 +119,6 @@
             <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Tilawah Quran</h3>\
             <div class="text-2xl font-extrabold text-emerald-600" id="tilawah-score">0 / 50</div>\
             <p class="text-xs text-slate-400 mt-1" id="tilawah-percent">0% Ketepatan</p>\
-          </div>\
-        </div>\
-\
-        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl text-amber-800 text-sm mb-6 text-left flex items-start space-x-3">\
-          <i class="fa-solid fa-lightbulb text-amber-600 text-lg mt-0.5"></i>\
-          <div>\
-            <span class="font-bold">Tip UASA:</span> Pastikan soalan Imlak Jawi menyemak imbuhan awalan (mem-, ber-, pe-) dan imbuhan akhiran (-an, -kan) dengan teliti. Bagi Tilawah Al-Quran, sentiasa camkan tanda sukun dan hukum tajwid utama!\
           </div>\
         </div>\
 \
@@ -167,9 +147,8 @@
         </button>\
       </div>\
 \
-      <p class="text-sm text-slate-600 mb-6">Ajak kawan-kawan kelas Tahun 4 menjawab latih tubi 100 soalan UASA Imlak Jawi & Tilawah Quran ini bersama-sama!</p>\
+      <p class="text-sm text-slate-600 mb-6">Ajak kawan-kawan kelas Tahun 4 menjawab latih tubi 100 soalan UASA ini bersama-sama!</p>\
 \
-      <!-- Share Options Buttons -->\
       <div class="grid grid-cols-2 gap-3 mb-6">\
         <button onclick="shareWhatsApp()" class="bg-emerald-500 hover:bg-emerald-600 text-white p-3 rounded-xl font-medium text-sm flex items-center justify-center space-x-2 transition shadow-sm">\
           <i class="fa-brands fa-whatsapp text-lg"></i>\
@@ -181,7 +160,6 @@
         </button>\
       </div>\
 \
-      <!-- Copy Link Section -->\
       <div class="relative">\
         <input type="text" id="share-url-input" readonly class="w-full bg-slate-100 border border-slate-300 rounded-xl py-2.5 pl-3 pr-24 text-xs text-slate-600 focus:outline-none">\
         <button onclick="copyShareUrl()" id="copy-btn" class="absolute right-1 top-1 bottom-1 bg-emerald-600 hover:bg-emerald-700 text-white px-3 text-xs font-semibold rounded-lg transition">\
@@ -197,7 +175,6 @@
   </footer>\
 \
   <script>\
-    // --- 100 SOALAN DATABASE ---\
     const quizData = \{\
       jawi: [\
         \{ question: "Perkataan 'sekolah' dieja dengan betul sebagai...", options: ["\uc0\u1587 \u1603 \u1608 \u1604 \u1607 ", "\u1587 \u1603 \u1607 ", "\u1587 \u1603 \u1608 \u1608 \u1604 \u1607 ", "\u1587 \u1602 \u1608 \u1604 \u1607 "], answer: 3, topic: "Ejaan kata tunggal", rationale: "Perkataan 'sekolah' dieja \u1587 \u1602 \u1608 \u1604 \u1607  mengikut padanan suku kata se-ko-lah dalam ejaan Jawi DBP." \},\
@@ -205,7 +182,6 @@
         \{ question: "Perkataan 'solat' dieja dengan betul sebagai...", options: ["\uc0\u1587 \u1608 \u1604 \u1575 \u1578 ", "\u1589 \u1604 \u1608 \u1577 ", "\u1589 \u1604 \u1575 \u1577 ", "\u1587 \u1604 \u1575 \u1577 "], answer: 2, topic: "Kata pinjaman Bahasa Arab", rationale: "Kata 'solat' mengekalkan ejaan asal bahasa Arab iaitu \u1589 \u1604 \u1575 \u1577 ." \},\
         \{ question: "Perkataan 'cerita' dieja dengan betul sebagai...", options: ["\uc0\u1670 \u1585 \u1578 \u1575 ", "\u1670 \u1585 \u1610 \u1578 \u1575 ", "\u1670 \u1585 \u1610 \u1578 \u1608 ", "\u1670 \u1585 \u1614 \u1610 \u1578 \u1575 "], answer: 1, topic: "Ejaan kata tunggal", rationale: "Perkataan 'cerita' dieja \u1670 \u1585 \u1610 \u1578 \u1575  mengikut padanan ejaan DBP." \},\
         \{ question: "Perkataan 'bacaan' dieja dengan betul sebagai...", options: ["\uc0\u1576 \u1575 \u1670 \u1575 \u1606 ", "\u1576 \u1575 \u1670 \u1575 \u1569 \u1606 ", "\u1576 \u1575 \u1670 \u1575 \u1569 \u1608 \u1606 ", "\u1576 \u1575 \u1670 \u1569 \u1606 "], answer: 1, topic: "Imbuhan akhiran -an", rationale: "Kata dasar berakhiran vokal 'a' (\u1576 \u1575 \u1670 \u1575 ) menerima imbuhan '-an' dalam bentuk hamzah dan nun (\u1569 \u1606 )." \},\
-        // Lanjutan 45 soalan Imlak Jawi secara bersistem\
         ...Array.from(\{ length: 45 \}, (_, i) => \{\
           const id = i + 6;\
           const items = [\
@@ -232,13 +208,12 @@
         \{ question: "Manakah antara huruf berikut merupakan huruf Qolqolah?", arabic: "", options: ["\uc0\u1602  \u1548  \u1591  \u1548  \u1576  \u1548  \u1580  \u1548  \u1583 ", "\u1606  \u1548  \u1605  \u1548  \u1604  \u1548  \u1585 ", "\u1569  \u1548  \u1607 \u1600  \u1548  \u1593  \u1548  \u1581 ", "\u1601  \u1548  \u1602  \u1548  \u1603  \u1548  \u1604 "], answer: 0, topic: "Hukum Qolqolah", rationale: "Huruf Qolqolah terhimpun dalam frasa (\u1602 \u1615 \u1591 \u1618 \u1576 \u1615  \u1580 \u1614 \u1583 \u1613 )." \},\
         \{ question: "Apakah maksud tanda Waqaf (\uc0\u1605 \u1600 ) dalam bacaan Al-Quran?", arabic: "", options: ["Harus berhenti", "Wajib berhenti (Waqaf Lazim)", "Dilarang berhenti", "Lebih baik menyambung"], answer: 1, topic: "Tanda-Tanda Waqaf", rationale: "Tanda Mim kecil (\u1605 \u1600 ) menandakan Waqaf Lazim iaitu WAJIB berhenti." \},\
         \{ question: "Hukum bacaan Mim Sakinah (\uc0\u1605 \u1618 ) bertemu dengan huruf Mim (\u1605 ) ialah:", arabic: "\u1604 \u1614 \u1607 \u1615 \u1605 \u1618  \u1605 \u1614 \u1575  \u1610 \u1614 \u1588 \u1614 \u1575 \u1569 \u1615 \u1608 \u1606 \u1614 ", options: ["Ikhfa' Syafawi", "Idgham Mislain / Syafawi", "Izhhar Syafawi", "Iqlab"], answer: 1, topic: "Hukum Mim Sakinah", rationale: "Mim Sakinah bertemu Mim (\u1605 ) dinamakan Idgham Mislain dan dibaca dengung." \},\
-        // Lanjutan 45 soalan Tilawah Al-Quran\
         ...Array.from(\{ length: 45 \}, (_, i) => \{\
           const id = i + 6;\
           const items = [\
             \{ q: "Apakah hukum tajwid bagi Nun Sakinah bertemu huruf Ra (\uc0\u1585 )?", ar: "\u1605 \u1616 \u1606 \u1618  \u1585 \u1614 \u1576 \u1616 \u1617 \u1607 \u1616 \u1605 \u1618 ", opts: ["Idgham Bila Ghunnah", "Idgham Ma'al Ghunnah", "Izhhar Halqi", "Ikhfa' Hakiki"], a: 0, t: "Hukum Nun Sakinah", r: "Nun Sakinah bertemu Ra (\u1585 ) ialah Idgham Bila Ghunnah (memasukkan tanpa dengung)." \},\
             \{ q: "Berapakah kadar panjang bacaan bagi Mad Asli / Mad Thabi'i?", ar: "\uc0\u1602 \u1614 \u1575 \u1604 \u1614 ", opts: ["2 harakat", "4 harakat", "5 harakat", "6 harakat"], a: 0, t: "Hukum Mad", r: "Mad Asli dibaca secara kadar asal iaitu 2 harakat sahaja." \},\
-            \{ q: "Tanda waqaf (\uc0\u1602 \u1604 \u1610 ) menunjukkan:", ar: "", opts: ["Lebih baik berhenti", "Lebih baik sambung", "Harus berhenti atau sambung", "Dilarang berhenti"], a: 0, t: "Tanda Waqaf", r: "Tanda \u1602 \u1604 \u1610  (Al-Waqfu Awla) bermaksud berhenti adalah lebih baik." \}\
+            \{ q: "Tanda waqaf (\uc0\u1602 \u1604 \u1610 ) menunjukkan:", ar: "", opts: ["Lebih baik berhenti", "Lebih baik sambung", "Harus berhenti atau menyambung", "Dilarang berhenti"], a: 0, t: "Tanda Waqaf", r: "Tanda \u1602 \u1604 \u1610  (Al-Waqfu Awla) bermaksud berhenti adalah lebih baik." \}\
           ];\
           const base = items[(id - 6) % items.length];\
           return \{\
@@ -253,15 +228,10 @@
       ]\
     \};\
 \
-    // State Variables\
     let currentSubject = 'jawi';\
     let currentIndex = \{ jawi: 0, tilawah: 0 \};\
-    let userAnswers = \{\
-      jawi: Array(50).fill(null),\
-      tilawah: Array(50).fill(null)\
-    \};\
+    let userAnswers = \{ jawi: Array(50).fill(null), tilawah: Array(50).fill(null) \};\
 \
-    // DOM Elements\
     const quizContainer = document.getElementById('quiz-container');\
     const summaryContainer = document.getElementById('summary-container');\
     const progressCard = document.getElementById('progress-card');\
@@ -283,17 +253,14 @@
       const index = currentIndex[currentSubject];\
       const q = qList[index];\
 \
-      // Update Header Info\
       subjectLabel.innerText = currentSubject === 'jawi' ? 'Imlak Jawi' : 'Tilawah Al-Quran';\
       questionCount.innerText = `Soalan $\{index + 1\} daripada $\{qList.length\}`;\
       const pct = ((index + 1) / qList.length) * 100;\
       progressBar.style.width = `$\{pct\}%`;\
 \
-      // Update Question Content\
       topicTag.innerText = `Topik: $\{q.topic\}`;\
       questionText.innerText = q.question;\
 \
-      // PERBAIKAN: Hanya paparkan paparan Jawi/Arab jika ada medan 'arabic' (Tilawah Al-Quran)\
       if (q.arabic && q.arabic.trim() !== '') \{\
         arabicDisplay.innerText = q.arabic;\
         arabicDisplay.classList.remove('hidden');\
@@ -301,7 +268,6 @@
         arabicDisplay.classList.add('hidden');\
       \}\
 \
-      // Render Options\
       optionsContainer.innerHTML = '';\
       const selectedAns = userAnswers[currentSubject][index];\
 \
@@ -330,7 +296,6 @@
         optionsContainer.appendChild(btn);\
       \});\
 \
-      // Update Feedback Box\
       if (selectedAns !== null) \{\
         const isCorrect = selectedAns === q.answer;\
         feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');\
@@ -417,15 +382,11 @@
     \}\
 \
     function resetQuiz() \{\
-      userAnswers = \{\
-        jawi: Array(50).fill(null),\
-        tilawah: Array(50).fill(null)\
-      \};\
+      userAnswers = \{ jawi: Array(50).fill(null), tilawah: Array(50).fill(null) \};\
       currentIndex = \{ jawi: 0, tilawah: 0 \};\
       switchSubject('jawi');\
     \}\
 \
-    // Share Modal\
     const shareModal = document.getElementById('share-modal');\
     const modalBox = document.getElementById('modal-box');\
     const shareUrlInput = document.getElementById('share-url-input');\
@@ -465,7 +426,6 @@
       window.open(`https://t.me/share/url?url=$\{url\}&text=$\{text\}`, '_blank');\
     \}\
 \
-    // Initial Load\
     renderQuestion();\
   </script>\
 </body>\
